@@ -10,7 +10,10 @@ current_clip = ""
 while True:
     cc = tkinter.Tk()
     cc.withdraw()
-    current_clip = cc.clipboard_get()
+    try:
+        current_clip = cc.clipboard_get()
+    except(tkinter._tkinter.TclError):
+        pass
     cc.update()
     cc.destroy()
     if current_clip != previous_clip:
